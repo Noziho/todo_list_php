@@ -3,7 +3,7 @@
 
 namespace App\model;
 
-class User
+class User extends AbstractEntity
 {
 
 }
