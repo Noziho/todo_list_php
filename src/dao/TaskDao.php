@@ -15,4 +15,6 @@ interface TaskDao
     function getTaskById(int $id);
 
     function getAll();
+
+    function getAllTaskByUserId(int $id);
 }

@@ -26,7 +26,7 @@ class TaskDaoImp implements TaskDao
         $stmt->bindValue(":title", $task->getTitle());
         $stmt->bindValue(":description", $task->getDescription());
         $stmt->bindValue(":due_date", $task->getDueDate());
-        $stmt->bindValue(":created_at", $task->getCreatedAt());
+        $stmt->bindValue(":created_at", $task->getCreatedAt()->format('y-m-d'));
         $stmt->bindValue(":status", $task->getStatus());
         $stmt->bindValue(":user_fk", $task->getUserFk());
 
@@ -54,7 +54,7 @@ class TaskDaoImp implements TaskDao
 
     public function delete(int $id): void
     {
-        $stmt = $this->conn->prepare("DELETE * FROM task WHERE id = :id");
+        $stmt = $this->conn->prepare("DELETE FROM task WHERE id = :id");
         $stmt->bindValue(':id', $id);
         $stmt->execute();
     }
@@ -72,4 +72,12 @@ class TaskDaoImp implements TaskDao
         return $this->conn->query('SELECT * FROM task')->fetchAll();
     }
 
+    public function getAllTaskByUserId(int $id): bool|array
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM task WHERE user_fk = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchAll();
+
+    }
 }

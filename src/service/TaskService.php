@@ -62,4 +62,17 @@ class TaskService
         }
         return $tasks;
     }
+
+    public function getAllByUserId(int $id): ?array
+    {
+        $result = $this->taskDao->getAllTaskByUserId($id);
+        $tasks = [];
+        if (is_array($result)){
+            foreach ($result as $task) {
+                $tasks[] = self::makeTask($task);
+            }
+            return $tasks;
+        }
+        return null;
+    }
 }

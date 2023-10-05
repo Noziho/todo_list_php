@@ -53,7 +53,7 @@ class UserDaoImp implements UserDao
 
     public function delete(int $id): void
     {
-        $stmt = $this->conn->prepare("DELETE * FROM user WHERE id = :id");
+        $stmt = $this->conn->prepare("DELETE FROM user WHERE id = :id");
         $stmt->bindValue(':id', $id);
         $stmt->execute();
     }

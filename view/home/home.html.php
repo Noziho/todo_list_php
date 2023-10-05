@@ -3,18 +3,23 @@
 if (isset($_SESSION['user'])) {?>
     <form action="/?c=task&a=add" method="post">
         <div>
-            <label for="title">Title</label>
+            <label for="title">Title:</label>
             <input type="text" name="title" id="title">
         </div>
 
         <div>
-            <label for="description">Description</label>
+            <label for="description">Description:</label>
             <textarea name="description" id="description" cols="30" rows="10" placeholder="Description ..."></textarea>
         </div>
 
         <div>
-            <label for="dueDate">Due date</label>
+            <label for="dueDate">Due date:</label>
             <input type="date" name="dueDate" id="dueDate">
+        </div>
+
+        <div>
+            <label for="status">Status:</label>
+            <input type="text" name="status" id="status">
         </div>
 
         <div>

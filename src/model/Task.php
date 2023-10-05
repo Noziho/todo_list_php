@@ -7,8 +7,8 @@ class Task extends AbstractEntity
 {
     private string $title;
     private string $description;
-    private DateTime $due_date;
-    private DateTime $created_at;
+    private DateTime | string $due_date;
+    private DateTime | string $created_at;
     private string $status;
     private int $user_fk;
 
@@ -16,8 +16,8 @@ class Task extends AbstractEntity
     (
         string $title,
         string $description,
-        DateTime $due_date,
-        DateTime $created_at,
+        DateTime | string $due_date,
+        DateTime | string $created_at,
         string $status,
         int $user_fk
     )
@@ -52,7 +52,7 @@ class Task extends AbstractEntity
         return $this;
     }
 
-    public function getDueDate(): DateTime
+    public function getDueDate(): DateTime | string
     {
         return $this->due_date;
     }
@@ -63,7 +63,7 @@ class Task extends AbstractEntity
         return $this;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): DateTime | string
     {
         return $this->created_at;
     }

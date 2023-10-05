@@ -19,6 +19,7 @@
         else{?>
             <a href="/?c=user&a=profil">Profil</a>
             <a href="/?c=user&a=logout">Log out</a>
+            <a href="/?c=task">Add task</a>
             <?php
         }
     ?>

@@ -3,14 +3,17 @@
 namespace App\controller;
 
 use App\model\User;
+use App\service\TaskService;
 use App\service\UserService;
 
 class UserController extends AbstractController
 {
     private UserService $userService;
+    private TaskService $taskService;
 
     public function __construct() {
         $this->userService = new UserService();
+        $this->taskService = new TaskService();
     }
     public function index(): void
     {
@@ -53,5 +56,20 @@ class UserController extends AbstractController
     {
         session_destroy();
         header("Location: /?c=home");
+    }
+
+    public function profil ()
+    {
+        if (isset($_SESSION['user'])) {
+            $this->render('user/profil',
+                [
+                    "user" => $this->userService->getUserById($_SESSION['user']->getId()),
+                    "tasks" => $this->taskService->getAllByUserId($_SESSION['user']->getId())
+                ]);
+        }
+        else {
+            header('Location: /?c=home');
+        }
+
     }
 }
