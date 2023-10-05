@@ -10,7 +10,18 @@
 </head>
 <body>
 <header>
-    <a href="/?c=user&a=register">Register</a>
+    <a href="/?c=home">Home</a>
+    <?php
+        if (!isset($_SESSION['user'])) {?>
+            <a href="/?c=user&a=register">Register</a>
+            <a href="/?c=user&a=login">Login</a><?php
+        }
+        else{?>
+            <a href="/?c=user&a=profil">Profil</a>
+            <a href="/?c=user&a=logout">Log out</a>
+            <?php
+        }
+    ?>
 </header>
 
 <main><?= $html ?></main>

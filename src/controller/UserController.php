@@ -39,8 +39,19 @@ class UserController extends AbstractController
         }
     }
 
-    public function login ()
+    public function login (): void
     {
         $this->render('user/login');
+
+        if (isset($_POST['submit'])) {
+            //Vérif des champs normalement
+            $this->userService->login($_POST['mail'], $_POST['password']);
+        }
+    }
+
+    public function logout(): void
+    {
+        session_destroy();
+        header("Location: /?c=home");
     }
 }

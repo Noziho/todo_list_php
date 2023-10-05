@@ -14,4 +14,6 @@ interface UserDao
 
     function getUserById(int $id);
 
+    function login(string $mail);
+
 }

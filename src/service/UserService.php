@@ -51,5 +51,24 @@ class UserService
         return null;
     }
 
+    public function login(string $mail, string $passwordDecode): void
+    {
+        $user = $this->userDao->login($mail);
+        if ($user) {
+            $password = $user['password'];
+            if (password_verify($passwordDecode, $password) && !isset($_SESSION['user'])) {
+                $userObj = self::makeUser($user);
+                $userObj->setPassword('');
+                $_SESSION['user'] = $userObj;
+                header("Location: /?c=home");
+            }
+            else {
+                header("Location: /?c=user&a=login");
 
+            }
+        }
+        else {
+            header("Location: /?c=user&a=login");
+        }
+    }
 }

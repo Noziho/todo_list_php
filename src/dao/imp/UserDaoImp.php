@@ -65,4 +65,14 @@ class UserDaoImp implements UserDao
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function login(string $mail): ?array
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM user WHERE mail = :mail");
+        $stmt->bindValue(':mail', $mail);
+        if ($stmt->execute()) {
+           return $stmt->fetch();
+        }
+        return null;
+    }
 }
