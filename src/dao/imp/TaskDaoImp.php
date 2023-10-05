@@ -36,7 +36,7 @@ class TaskDaoImp implements TaskDao
     public function edit(Task $task): void
     {
         $stmt = $this->conn->prepare("
-            UPDATE Task
+            UPDATE task
             SET title = :title,
                 description = :description,
                 due_date = :due_date,

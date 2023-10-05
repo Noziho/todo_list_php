@@ -2,15 +2,16 @@
 
 
 namespace App\dao;
+use App\model\User;
+
 interface UserDao
 {
-    function create();
+    function create(User $user);
 
-    function edit();
+    function edit(User $user);
 
-    function delete();
+    function delete(int $id);
 
-    function getUserById();
+    function getUserById(int $id);
 
-    function getAll();
 }

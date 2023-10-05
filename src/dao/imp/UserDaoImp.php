@@ -3,33 +3,66 @@
 
 namespace App\dao\imp;
 use App\dao\UserDao;
+use App\model\User;
+use App\utils\DBconnect;
+use PDO;
 
 class UserDaoImp implements UserDao
 {
 
 
-    function create()
+    private PDO $conn;
+
+    public function __construct()
     {
-        // TODO: Implement create() method.
+        $this->conn = DBconnect::getInstance()->getPdo();
     }
 
-    function edit()
+    public function create(User $user) :void
     {
-        // TODO: Implement edit() method.
+        $stmt = $this->conn->prepare("
+        INSERT INTO user (name, firsname, mail, password)
+        VALUES (:name, :firstname, :mail, :password)
+        ");
+
+        $stmt->bindValue(":name", $user->getName());
+        $stmt->bindValue(":firstName", $user->getFirstname());
+        $stmt->bindValue(":mail", $user->getMail());
+        $stmt->bindValue(":password", $user->getPassword());
+
+        $stmt->execute();
     }
 
-    function delete()
+    public function edit(User $user): void
     {
-        // TODO: Implement delete() method.
+        $stmt = $this->conn->prepare("
+            UPDATE user
+            SET name = :name,
+                firstname = :firstname,
+                mail = :mail,
+                password = :password
+            WHERE id = :id");
+
+        $stmt->bindValue(':name', $user->getName());
+        $stmt->bindValue(':firstname', $user->getFirstname());
+        $stmt->bindValue(':mail', $user->getMail());
+        $stmt->bindValue(':password', $user->getPassword());
+
+        $stmt->execute();
     }
 
-    function getUserById()
+    public function delete(int $id): void
     {
-        // TODO: Implement getUserById() method.
+        $stmt = $this->conn->prepare("DELETE * FROM user WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
     }
 
-    function getAll()
+    public function getUserById(int $id)
     {
-        // TODO: Implement getAll() method.
+        $stmt = $this->conn->prepare("SELECT * FROM user WHERE id = :id");
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
