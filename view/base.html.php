@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/public/assets/css/style.css">
 </head>
 <body>
+<header>
+    <a href="/?c=user&a=register">Register</a>
+</header>
 
 <main><?= $html ?></main>
 

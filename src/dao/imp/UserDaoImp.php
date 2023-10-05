@@ -21,12 +21,12 @@ class UserDaoImp implements UserDao
     public function create(User $user) :void
     {
         $stmt = $this->conn->prepare("
-        INSERT INTO user (name, firsname, mail, password)
+        INSERT INTO user (name, firstname, mail, password)
         VALUES (:name, :firstname, :mail, :password)
         ");
 
         $stmt->bindValue(":name", $user->getName());
-        $stmt->bindValue(":firstName", $user->getFirstname());
+        $stmt->bindValue(":firstname", $user->getFirstname());
         $stmt->bindValue(":mail", $user->getMail());
         $stmt->bindValue(":password", $user->getPassword());
 
