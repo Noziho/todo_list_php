@@ -41,15 +41,34 @@ class TaskController extends AbstractController
         }
     }
 
-    public function edit(int $id)
+    public function edit(int $id): void
     {
         $this->render('task/edit',
             [
                 'task' => $this->taskService->getTaskById($id),
             ]);
+
+        if (isset($_POST['submit'])) {
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $dueDate = $_POST['dueDate'];
+            $status = $_POST['status'];
+            $editedTask = (new Task
+            (
+                $title,
+                $description,
+                $dueDate,
+                $this->taskService->getTaskById($id)->getCreatedAt(),
+                $status,
+                $_SESSION['user']->getId()
+            ))->setId($id);
+            $this->taskService->edit($editedTask);
+            header('Location: /?c=user&a=profil');
+        }
     }
 
-    public function delete(int $id) {
+    public function delete(int $id): void
+    {
         $this->taskService->delete($id);
         header("Location: /?c=home");
     }

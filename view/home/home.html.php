@@ -18,8 +18,12 @@ if (isset($_SESSION['user'])) {?>
         </div>
 
         <div>
-            <label for="status">Status:</label>
-            <input type="text" name="status" id="status">
+            <label for="status">Status</label>
+            <select name="status" id="status">
+                <option value="Todo">Todo</option>
+                <option value="Progress">Progress</option>
+                <option value="Done">Done</option>
+            </select>
         </div>
 
         <div>
