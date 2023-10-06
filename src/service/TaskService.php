@@ -75,4 +75,9 @@ class TaskService
         }
         return null;
     }
+
+    public function editStatus(int $id, string $status): void
+    {
+        $this->taskDao->editTaskStatus($id, $status);
+    }
 }

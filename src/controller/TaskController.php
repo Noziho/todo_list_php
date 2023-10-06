@@ -73,4 +73,10 @@ class TaskController extends AbstractController
         header("Location: /?c=home");
     }
 
+    public function editStatus(int $id, string $status): void
+    {
+        $this->taskService->editStatus($id, $status);
+        header('Location: /?c=user&a=profil');
+    }
+
 }

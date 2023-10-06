@@ -17,4 +17,6 @@ interface TaskDao
     function getAll();
 
     function getAllTaskByUserId(int $id);
+
+    function editTaskStatus(int $id, string $status);
 }

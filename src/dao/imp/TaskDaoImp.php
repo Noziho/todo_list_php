@@ -85,4 +85,18 @@ class TaskDaoImp implements TaskDao
         return $stmt->fetchAll();
 
     }
+
+    public function editTaskStatus(int $id, string $status): void
+    {
+        $stmt = $this->conn->prepare
+        ("
+            UPDATE task
+            SET status = :status
+            WHERE id = :id
+        ");
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':status', $status);
+
+        $stmt->execute();
+    }
 }

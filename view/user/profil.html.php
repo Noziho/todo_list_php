@@ -33,6 +33,7 @@ if (isset($data)){
                 <p>Created at => <?= $task->getCreatedAt() ?></p>
                 <a href="/?c=task&a=edit&id=<?= $task->getId() ?>">Editer</a>
                 <a href="/?c=task&a=delete&id=<?= $task->getId() ?>">Supprimer</a>
+                <a href="/?c=task&a=editStatus&id=<?= $task->getId() ?>&status=Done">Task done</a>
             </div>
             <?php
         }
