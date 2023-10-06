@@ -33,7 +33,8 @@ if (isset($data)){
     <input type="submit" name="submit">
 </form>
 
-<div>
+<div class="info_usr">
+    <h2>Info user</h2>
     <p>Name => <?= $user->getName() ?></p>
     <p>Firstname => <?= $user->getFirstname() ?></p>
     <p>Mail => <?= $user->getMail() ?></p>
@@ -45,7 +46,7 @@ if (isset($data)){
     <?php
         foreach ($tasks as $task) {
             /** @var $task Task **/?>
-            <div>
+            <div class="task">
                 <p>Titre => <?= $task->getTitle() ?></p>
                 <p>Description => <?= $task->getDescription() ?></p>
                 <p>Status => <?= $task->getStatus() ?></p>

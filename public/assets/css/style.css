@@ -26,6 +26,7 @@ header > a {
 * a {
    text-decoration: none;
     color: #ff6a80;
+    margin-inline: 2rem;
 }
 
 .container {
@@ -35,12 +36,33 @@ header > a {
     justify-content: center;
 }
 
-#welcome {
+#welcome, form, .task, .info_usr {
     background: #FAFAFA;
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-flow: row wrap;
     min-height: 20rem;
     -webkit-box-shadow: 0 1px 5px 1px rgba(0,0,0,0.15);
+}
+
+div {
+    width: 100%;
+}
+
+.task {
+    margin-top: 5rem;
+}
+
+.task > p {
+    width: 100%;
+}
+
+.info_usr {
+    margin-top: 5rem;
+}
+
+.info_usr > p{
+    width: 100%;
 }
