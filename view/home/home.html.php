@@ -33,7 +33,7 @@ if (isset($_SESSION['user'])) {?>
     <?php
 }
 else {?>
-    <div>
+    <div id="welcome">
         <p>
             <a href="/?c=user&a=login">Login</a> for use our app or <a href="/?c=user&a=register">register</a>
             if u don't have account</p>

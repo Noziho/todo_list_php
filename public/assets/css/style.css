@@ -1,13 +1,46 @@
+html {
+    font-size: 62.5%;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    font-size: 62.5%;
+body {
+    font-size: 1.6rem;
+}
+
+header {
+    width: 100%;
+    padding: 2rem;
+    min-height: 4rem;
+    background: #FAFAFA;
+    box-shadow: 0 5px 5px -6px rgba(0,0,0,0.15);}
+
+header > a {
+    margin-inline: 2rem;
+}
+
+* a {
+   text-decoration: none;
+    color: #ff6a80;
 }
 
 .container {
     width: 100%;
+    display: flex;
+    margin-top: 10rem;
+    justify-content: center;
+}
+
+#welcome {
+    background: #FAFAFA;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20rem;
+    -webkit-box-shadow: 0 1px 5px 1px rgba(0,0,0,0.15);
 }
