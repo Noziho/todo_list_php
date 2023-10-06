@@ -47,6 +47,7 @@ class UserDaoImp implements UserDao
         $stmt->bindValue(':firstname', $user->getFirstname());
         $stmt->bindValue(':mail', $user->getMail());
         $stmt->bindValue(':password', $user->getPassword());
+        $stmt->bindValue(':id', $user->getId());
 
         $stmt->execute();
     }

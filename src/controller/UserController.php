@@ -20,7 +20,7 @@ class UserController extends AbstractController
         $this->render('user/profil');
     }
 
-    public function register ()
+    public function register (): void
     {
         $this->render('user/register');
 
@@ -58,7 +58,7 @@ class UserController extends AbstractController
         header("Location: /?c=home");
     }
 
-    public function profil ()
+    public function profil (): void
     {
         if (isset($_SESSION['user'])) {
             $this->render('user/profil',
@@ -71,5 +71,31 @@ class UserController extends AbstractController
             header('Location: /?c=home');
         }
 
+    }
+
+    public function edit(): void
+    {
+        if (isset($_POST['submit'])) {
+            $user = $this->userService->getUserById($_SESSION['user']->getId());
+
+            $editedUser = (new User
+            (
+                $_POST['name'],
+                $_POST['firstname'],
+                $_POST['mail'],
+                $user->getPassword()
+
+            ))->setId($_SESSION['user']->getId());
+
+            $this->userService->edit($editedUser);
+            header('Location: /?c=user&a=profil');
+        }
+
+    }
+
+    public function delete (): void
+    {
+        $this->userService->delete($_SESSION['user']->getId());
+        self::logout();
     }
 }

@@ -70,7 +70,7 @@ class TaskController extends AbstractController
     public function delete(int $id): void
     {
         $this->taskService->delete($id);
-        header("Location: /?c=home");
+        header("Location: /?c=user&a=profil");
     }
 
     public function editStatus(int $id, string $status): void
